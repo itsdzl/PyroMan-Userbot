@@ -36,7 +36,7 @@ async def module_help(client: Client, message: Message):
             message, f"```{str(ac)}```\n• @justdzL × @dzvoices •"
         )
         await message.reply(
-            f"**Contoh Ketik** `{CMD_HANDLER}help afk` **Untuk Melihat Informasi Module**"
+            f"**Example Type** `{CMD_HANDLER}help afk` **for detail information.**"
         )
 
     if help_arg:
@@ -52,7 +52,7 @@ async def module_help(client: Client, message: Message):
         else:
             await edit_or_reply(
                 message,
-                f"`{help_arg}` **Bukan Nama Modul yang Valid.**",
+                f"`{help_arg}` **u um...**",
             )
 
 
