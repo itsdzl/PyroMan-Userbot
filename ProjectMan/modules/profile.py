@@ -30,13 +30,13 @@ async def block_user_func(client: Client, message: Message):
     Man = await edit_or_reply(message, "`Processing . . .`")
     if not user_id:
         return await message.edit(
-            "Berikan User ID/Username atau reply pesan pengguna untuk membuka blokir."
+            "Provide User ID/Username or reply to user message to unblock."
         )
     if user_id == client.me.id:
         return await Man.edit("anda stress harap segera minum obat.")
     await client.block_user(user_id)
     umention = (await client.get_users(user_id)).mention
-    await message.edit(f"**Berhasil Memblokir** {umention}")
+    await message.edit(f"**Successfully Blocked** {umention}")
 
 
 @Client.on_message(filters.command(["unblock"], cmd) & filters.me)
@@ -45,13 +45,13 @@ async def unblock_user_func(client: Client, message: Message):
     Man = await edit_or_reply(message, "`Processing . . .`")
     if not user_id:
         return await message.edit(
-            "Berikan User ID/Username atau reply pesan pengguna untuk membuka blokir."
+            "Provide User ID/Username or reply to user message to unblock."
         )
     if user_id == client.me.id:
         return await Man.edit("anda stress harap segera minum obat.")
     await client.unblock_user(user_id)
     umention = (await client.get_users(user_id)).mention
-    await message.edit(f"**Berhasil Membuka Blokir** {umention}")
+    await message.edit(f"**Successfully Unblocked** {umention}")
 
 
 @Client.on_message(filters.command(["setname"], cmd) & filters.me)
@@ -59,18 +59,18 @@ async def setname(client: Client, message: Message):
     Man = await edit_or_reply(message, "`Processing . . .`")
     if len(message.command) == 1:
         return await Man.edit(
-            "Berikan teks untuk ditetapkan sebagai nama telegram anda."
+            "Give the text to set as your telegram name."
         )
     elif len(message.command) > 1:
         name = message.text.split(None, 1)[1]
         try:
             await client.update_profile(first_name=name)
-            await Man.edit(f"**Berhasil Mengubah Nama Telegram anda Menjadi** `{name}`")
+            await Man.edit(f"**Successfully Changed Your Telegram Name To** `{name}`")
         except Exception as e:
             await Man.edit(f"**ERROR:** `{e}`")
     else:
         return await Man.edit(
-            "Berikan teks untuk ditetapkan sebagai nama telegram anda."
+            "Give the text to set as your telegram name."
         )
 
 
