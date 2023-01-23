@@ -63,7 +63,7 @@ async def purge(client: Client, message: Message):
             return
 
     done = await Man.edit(
-        f"**Fast Purge Completed!**\n**Berhasil Menghapus** `{str(count)}` **Pesan.**"
+        f"**Fast Purge Completed!**\n**Successfully Deleted** `{str(count)}` **Messages.**"
     )
     await asyncio.sleep(2)
     await done.delete()
@@ -78,10 +78,10 @@ async def purgeme(client: Client, message: Message):
         return await message.delete()
     n = message.text.split(None, 1)[1].strip()
     if not n.isnumeric():
-        return await edit_or_reply(message, "Harap masukan angka")
+        return await edit_or_reply(message, "Please enter a number")
     n = int(n)
     if n < 1:
-        return await edit_or_reply(message, "Masukan jumlah pesan yang ingin dihapus!")
+        return await edit_or_reply(message, "Enter the number of messages you want to delete!")
     chat_id = message.chat.id
     message_ids = [
         m.id
@@ -92,7 +92,7 @@ async def purgeme(client: Client, message: Message):
         )
     ]
     if not message_ids:
-        return await edit_or_reply(message, "Tidak dapat menemukan pesan.")
+        return await edit_or_reply(message, "Could not find message.")
     to_delete = [message_ids[i : i + 99] for i in range(0, len(message_ids), 99)]
     for hundred_messages_or_less in to_delete:
         await client.delete_messages(
