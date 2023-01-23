@@ -28,12 +28,12 @@ async def module_help(client: Client, message: Message):
     elif not message.reply_to_message and len(cmd) == 1:
         ac = PrettyTable()
         ac.header = False
-        ac.title = "PyroMan-UserBot Modules"
+        ac.title = "x Modules"
         ac.align = "l"
         for x in split_list(sorted(CMD_HELP.keys()), 2):
             ac.add_row([x[0], x[1] if len(x) >= 2 else None])
         await edit_or_reply(
-            message, f"```{str(ac)}```\n• @Lunatic0de × @SharingUserbot •"
+            message, f"```{str(ac)}```\n• @justdzL × @dzvoices •"
         )
         await message.reply(
             f"**Contoh Ketik** `{CMD_HANDLER}help afk` **Untuk Melihat Informasi Module**"
