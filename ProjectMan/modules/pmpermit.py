@@ -25,11 +25,11 @@ DEF_UNAPPROVED_MSG = (
     "╔════════════════════╗\n"
     "     ⛑ 𝗔𝗧𝗧𝗘𝗡𝗧𝗜𝗢𝗡 𝗣𝗟𝗘𝗔𝗦𝗘 ⛑\n"
     "╚════════════════════╝\n"
-    "• Saya belum menyetujui anda untuk PM.\n"
-    "• Tunggu sampai saya menyetujui PM anda.\n"
-    "• Jangan Spam Chat atau anda akan otomatis diblokir.\n"
+    "• I haven't approved you for PM.\n"
+    "• Wait until I approve You.\n"
+    "• Don't Spam or you will be blocked.\n"
     "╔════════════════════╗\n"
-    "    𝗣𝗲𝘀𝗮𝗻 𝗢𝘁𝗼𝗺𝗮𝘁𝗶𝘀 𝗕𝘆 -𝗨𝘀𝗲𝗿𝗕𝗼𝘁\n"
+    "    𝗔𝘂𝘁𝗼 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 𝗕𝘆 -𝗱𝘇𝗟\n"
     "╚════════════════════╝\n"
 )
 
@@ -82,7 +82,7 @@ async def incomingpm(client: Client, message: Message):
                     TEMP_SETTINGS["PM_COUNT"][message.chat.id] + 1
                 )
             if TEMP_SETTINGS["PM_COUNT"][message.chat.id] > (int(PM_LIMIT) - 1):
-                await message.reply("**Maaf anda Telah Di Blokir Karna Spam Chat**")
+                await message.reply("**Sorry you have been blocked due to spam chat..**")
                 try:
                     del TEMP_SETTINGS["PM_COUNT"][message.chat.id]
                     del TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id]
@@ -152,7 +152,7 @@ async def approvepm(client: Client, message: Message):
         reply = message.reply_to_message
         replied_user = reply.from_user
         if replied_user.is_self:
-            await message.edit("Anda tidak dapat menyetujui diri sendiri.")
+            await message.edit("You can't approve yourself.")
             return
         aname = replied_user.id
         name0 = str(replied_user.first_name)
@@ -161,7 +161,7 @@ async def approvepm(client: Client, message: Message):
         aname = message.chat
         if not aname.type == enums.ChatType.PRIVATE:
             await message.edit(
-                "Saat ini Anda tidak sedang dalam PM dan Anda belum membalas pesan seseorang."
+                "You're not currently in PM and you haven't replied to someone's message."
             )
             return
         name0 = aname.first_name
@@ -169,10 +169,10 @@ async def approvepm(client: Client, message: Message):
 
     try:
         approve(uid)
-        await message.edit(f"**Menerima Pesan Dari** [{name0}](tg://user?id={uid})!")
+        await message.edit(f"**Approved Messages From** [{name0}](tg://user?id={uid})!")
     except IntegrityError:
         await message.edit(
-            f"[{name0}](tg://user?id={uid}) mungkin sudah disetujui untuk PM."
+            f"[{name0}](tg://user?id={uid}) probably already approved."
         )
         return
 
@@ -191,7 +191,7 @@ async def disapprovepm(client: Client, message: Message):
         reply = message.reply_to_message
         replied_user = reply.from_user
         if replied_user.is_self:
-            await message.edit("Anda tidak bisa menolak dirimu sendiri.")
+            await message.edit("You can't deny yourself.")
             return
         aname = replied_user.id
         name0 = str(replied_user.first_name)
@@ -200,7 +200,7 @@ async def disapprovepm(client: Client, message: Message):
         aname = message.chat
         if not aname.type == enums.ChatType.PRIVATE:
             await message.edit(
-                "Saat ini Anda tidak sedang dalam PM dan Anda belum membalas pesan seseorang."
+                "You're not currently in PM and you haven't replied to someone's message."
             )
             return
         name0 = aname.first_name
@@ -209,7 +209,7 @@ async def disapprovepm(client: Client, message: Message):
     dissprove(uid)
 
     await message.edit(
-        f"**Pesan** [{name0}](tg://user?id={uid}) **Telah Ditolak, Mohon Jangan Melakukan Spam Chat!**"
+        f"[{name0}](tg://user?id={uid}) **Denied, Please Don't Spam Chat!**"
     )
 
 
