@@ -22,10 +22,10 @@ class First:
 ✣ **Repo :** [PyroMan-Userbot](https://github.com/mrismanaziz/PyroMan-Userbot)"""
     CREATOR = 'I was created by my master <a href="https://github.com/mrismanaziz/PyroMan-Userbot">Man</a> on a rainy day.'
     MSG_ON = """
-🔥 **PyroMan-Userbot Berhasil Di Aktifkan**
+🔥 **PyroMan-Userbot Activated**
 ━━
 ➠ **Userbot Version -** `{}`
-➠ **Ketik** `{}alive` **untuk Mengecheck Bot**
+➠ **Type** `{}alive` **for checking the bot**
 ━━
 """
 
