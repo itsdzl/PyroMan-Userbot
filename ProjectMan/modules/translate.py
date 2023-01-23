@@ -67,7 +67,7 @@ async def translate(client: Client, message: Message):
             return
     await edit_or_reply(
         message,
-        f"**Diterjemahkan ke:** `{target}`\n```{tekstr.text}```\n\n**Bahasa yang Terdeteksi:** `{(await trl.detect(text))}`",
+        f"**Translated to:** `{target}`\n```{tekstr.text}```\n\n**Detected Language:** `{(await trl.detect(text))}`",
         parse_mode=enums.ParseMode.MARKDOWN,
     )
 
