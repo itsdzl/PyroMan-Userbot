@@ -53,7 +53,7 @@ async def alive(client: Client, message: Message):
         f"{emoji} <b>Python Version :</b> <code>{python_version()}</code> \n"
         f"{emoji} <b>Pyrogram Version :</b> <code>{versipyro}</code> \n"
         f"{emoji} <b>Bot Uptime :</b> <code>{uptime}</code> \n\n"
-        f"    **[Base Repo](https://github.com/mrismanaziz/PyroMan-Userbot)** | **[DzL](https://t.me/{CHANNEL})**"
+        f"    **[Base Repo](https://github.com/mrismanaziz/PyroMan-Userbot)** | **[DzL](https://t.me/dzvoices)**"
     )
     try:
         await asyncio.gather(
