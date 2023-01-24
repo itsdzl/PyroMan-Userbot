@@ -38,19 +38,12 @@ async def sg(client: Client, message: Message):
         await client.send_message(bot, f"/search_id {user.id}")
     await asyncio.sleep(1)
 
-    async for stalk in client.search_messages(bot, query="Name", limit=1):
+    async for stalk in client.search_messages(bot, query="{user.id}", limit=1):
         if not stalk:
             await message.edit_text("**not found...**")
             return
         elif stalk:
             await message.edit(stalk.text)
-            await stalk.delete()
-
-    async for stalk in client.search_messages(bot, query="Username", limit=1):
-        if not stalk:
-            return
-        elif stalk:
-            await message.reply(stalk.text)
             await stalk.delete()
 
 
