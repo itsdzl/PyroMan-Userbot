@@ -41,12 +41,12 @@ async def del_msg(client: Client, message: Message):
 )
 @Client.on_message(filters.command("purge", cmd) & filters.me)
 async def purge(client: Client, message: Message):
-    Man = await edit_or_reply(message, "`Starting To Purge Messages!`")
+    Man = await edit_or_reply(message, "`Starting Purge Messages!`")
     msg = message.reply_to_message
     if msg:
         itermsg = list(range(msg.id, message.id))
     else:
-        await Man.edit("`Reply To Message To Purge!`")
+        await Man.edit("`Reply To Message For Purge!`")
         return
     count = 0
 
