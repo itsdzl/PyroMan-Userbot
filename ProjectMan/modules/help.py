@@ -33,10 +33,10 @@ async def module_help(client: Client, message: Message):
         for x in split_list(sorted(CMD_HELP.keys()), 2):
             ac.add_row([x[0], x[1] if len(x) >= 2 else None])
         await edit_or_reply(
-            message, f"```{str(ac)}```\n• @justdzL × @dzvoices •"
+            message, f"```{str(ac)}```\n • dzL"
         )
         await message.reply(
-            f"**Example Type** `{CMD_HANDLER}help afk` **for detail information.**"
+            f"**For example type** `{CMD_HANDLER}help afk` **to see detail.**"
         )
 
     if help_arg:
