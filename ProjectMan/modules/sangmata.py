@@ -30,17 +30,17 @@ async def sg(client: Client, message: Message):
             user = await client.get_users(args)
         except Exception:
             return await lol.edit(f"`Please specify a valid user!`")
-    bot = "SangMataInfo_bot"
+    bot = "SangMata_BOT"
     try:
-        await client.send_message(bot, f"/search_id {user.id}")
+        await client.send_message(bot, f"{user.id}")
     except YouBlockedUser:
         await client.unblock_user(bot)
-        await client.send_message(bot, f"/search_id {user.id}")
+        await client.send_message(bot, f"{user.id}")
     await asyncio.sleep(1)
 
-    async for stalk in client.search_messages(bot, query=f"Name History\n👤 {user.id}", limit=1):
+    async for stalk in client.search_messages(bot, query=f"History for {user.id}", limit=1):
         if not stalk:
-            await client.search_messages(bot, query="Not found...", limit=1)
+            await client.search_messages(bot, query="No data available...", limit=1)
             return
         elif stalk:
             await message.edit(stalk.text)
