@@ -41,7 +41,7 @@ async def sg(client: Client, message: Message):
     async for stalk in client.search_messages(bot, query=f"History for {user.id}", limit=1):
         if not stalk:
             await message.delete()
-            await lol.edit("**Not found...**")
+            await client.search_messages(bot, query=f"No data available", limit=1)
             return
         elif stalk:
             await message.edit(stalk.text)
