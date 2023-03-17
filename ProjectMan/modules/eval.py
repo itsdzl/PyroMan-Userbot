@@ -13,7 +13,7 @@ from ProjectMan.helpers.PyroHelpers import ReplyCheck
 
 
 @Client.on_message(
-    filters.command("eval", ".")
+    filters.command("eval", cmd)
     & filters.me
     & ~filters.forwarded
     & ~filters.via_bot
@@ -96,7 +96,7 @@ async def aexec(code, b, m, r, d):
 
 
 @Client.on_edited_message(
-    filters.command("exec", ".")
+    filters.command("exec", cmd)
     & filters.me
     & ~filters.forwarded
     & ~filters.via_bot
@@ -106,7 +106,7 @@ async def execution_func_edited(bot, message):
 
 
 @Client.on_message(
-    filters.command("exec", ".")
+    filters.command("exec", cmd)
     & filters.me
     & ~filters.forwarded
     & ~filters.via_bot
