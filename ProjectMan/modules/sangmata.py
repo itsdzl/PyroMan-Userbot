@@ -44,7 +44,7 @@ async def sg(client: Client, message: Message):
             return
         elif stalk:
             await message.edit(stalk.text)
-            await client.delete_user_history(bot)
+            await message.delete(bot)
 
 
 add_command_help(
