@@ -43,9 +43,8 @@ async def sg(client: Client, message: Message):
             await client.search_messages(bot, query="No data available...", limit=1)
             return
         elif stalk:
+            await message.delete()
             await message.edit(stalk.text)
-            await message.delete(bot)
-
 
 add_command_help(
     "sangmata",
