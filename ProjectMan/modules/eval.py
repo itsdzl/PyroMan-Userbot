@@ -8,6 +8,7 @@ from pyrogram import filters, Client
 from pyrogram.types import Message
 from config import CMD_HANDLER as cmd
 
+from ProjectMan import bot1 as app
 from ProjectMan.helpers.SQL import BASE as database
 from ProjectMan.helpers.PyroHelpers import ReplyCheck
 
@@ -66,7 +67,7 @@ async def evaluation_func(bot: Client, message: Message):
     else:
         evaluation = "Success"
 
-    final_output = "<b>Expression</b>:\n<code>{}</code>\n\n<b>Result</b>:\n<code>{}</code> \n".format(
+    final_output = "<b>command</b>:\n<code>{}</code>\n\n<b>output</b>:\n<code>{}</code> \n".format(
         cmd, evaluation.strip()
     )
 
@@ -134,9 +135,9 @@ async def execution(bot: Client, message: Message):
         o = "No output"
 
     OUTPUT = ""
-    OUTPUT += f"<b>Command:</b>\n<code>{cmd}</code>\n\n"
-    OUTPUT += f"<b>Output</b>: \n<code>{o}</code>\n"
-    OUTPUT += f"<b>Errors</b>: \n<code>{e}</code>"
+    OUTPUT += f"<b>command:</b>\n<code>{cmd}</code>\n\n"
+    OUTPUT += f"<b>output</b>: \n<code>{o}</code>\n"
+    OUTPUT += f"<b>errors</b>: \n<code>{e}</code>"
 
     if len(OUTPUT) > 4096:
         with open("exec.text", "w+", encoding="utf8") as out_file:
