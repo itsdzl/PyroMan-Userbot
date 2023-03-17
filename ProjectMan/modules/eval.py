@@ -7,7 +7,7 @@ import traceback
 from pyrogram import filters, Client
 from pyrogram.types import Message
 
-from Zaid.database import cli as database
+from ProjectMan.helpers.SQL import BASE as database
 from ProjectMan.helpers.PyroHelpers import ReplyCheck
 
 
