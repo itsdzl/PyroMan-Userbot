@@ -23,7 +23,7 @@ async def eval_func_init(bot, message):
 
 
 @Client.on_edited_message(
-    filters.command("eval", ".")
+    filters.command("eval", cmd)
     & filters.me
     & ~filters.forwarded
     & ~filters.via_bot
