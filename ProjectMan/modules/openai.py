@@ -16,12 +16,13 @@ from pyrogram.types import Message
 from pyrogram.errors import MessageNotModified
 from geezlibs.geez import geez
 from geezlibs.geez.helper.what import *
-from Geez import cmds
+from config import CMD_HANDLER as cmd
 from config import OPENAI_API
-from Geez.modules.basic import add_command_help
+
+from ProjectMan.modules.help import add_command_help
 
 
-@geez("ask", cmds)
+@geez("ask", cmd)
 async def openai(c, m):
     if len(m.command) == 1:
         return await m.reply(f"type <code>{cmds}{m.command[0]} [question]</code> Question to use OpenAI")
