@@ -46,6 +46,8 @@ async def openai(c, m):
 add_command_help(
     "openAI",
     [
-        ["ask [question]", "to ask questions using the API."],
+        [
+          "ask [question]", "to ask questions using the API.",
+        ],
     ],
 )
