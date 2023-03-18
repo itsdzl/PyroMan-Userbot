@@ -17,7 +17,6 @@ from pyrogram.errors import MessageNotModified
 from config import CMD_HANDLER as cmd
 from config import OPENAI_API
 
-from ProjectMan.utils.exceptions import DzError
 from ProjectMan.helpers.njul import *
 from ProjectMan.modules.help import add_command_help
 
@@ -45,15 +44,13 @@ async def openai(c, m):
     except MessageNotModified:
         pass
     except Exception as e:
-                ex_type = type(e).__name__
-                err = (
-                    e
-                    if ex_type == "DzError"
-                    else _["general_3"].format(ex_type)
+            return await m.reply(
+                    f"""
+**not responding...**
+**r**:{e}
+"""
                 )
-                return await msg.edit_text(err)
-            return await msg.delete()
-        return
+
 
 add_command_help(
     "openAI",
