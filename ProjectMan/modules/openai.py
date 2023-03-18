@@ -15,7 +15,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import MessageNotModified
 from geezlibs.geez import geez
-from geezlibs.geez.helper.what import *
+from ProjectMan.helpers.njul import *
 from config import CMD_HANDLER as cmd
 from config import OPENAI_API
 
