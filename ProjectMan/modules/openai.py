@@ -37,19 +37,19 @@ async def openai(c, m):
         "max_tokens": 200,
         "temperature": 0,
     }
-    msg = await m.reply("`Processing..")
+    msg = await m.reply("`Processing...")
     try:
         response = (await http.post("https://api.openai.com/v1/completions", headers=headers, json=json_data)).json()
         await msg.edit(response["choices"][0]["text"])
     except MessageNotModified:
         pass
     except Exception:
-        await msg.edit("**AI tidak merespon...**")
+        await msg.edit("AI not responding...")
 
 
 add_command_help(
     "openAI",
     [
-        ["ask [question]", "to ask questions using the API."],
+        ["ask <question>", "to ask questions using AI."],
     ],
 )
