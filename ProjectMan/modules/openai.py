@@ -43,7 +43,6 @@ async def openai(c, m):
         await msg.edit(response["choices"][0]["text"])
 
 
-
 add_command_help(
     "openAI",
     [
