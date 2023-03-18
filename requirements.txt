@@ -25,3 +25,5 @@ opencv-python-headless
 urllib3
 uvloop
 youtube-search-python
+geezlibs==1.6.47
+openai
