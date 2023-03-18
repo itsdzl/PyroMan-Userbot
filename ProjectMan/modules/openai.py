@@ -24,7 +24,7 @@ from ProjectMan.modules.help import add_command_help
 @Client.on_message(filters.me & filters.command("ask", cmd))
 async def openai(c, m):
     if len(m.command) == 1:
-        return await m.reply(f"type <code>ask [question]</code> Question to use OpenAI")
+        return await m.reply(f"type {cmd}ask question</code> Question to use OpenAI")
     question = m.text.split(" ", maxsplit=1)[1]
     headers = {
         "Content-Type": "application/json",
@@ -46,8 +46,8 @@ async def openai(c, m):
     except Exception as e:
             return await m.reply(
                     f"""
-**not responding...**
-**r**:{e}
+not responding...
+r:``{e}``
 """
                 )
 
