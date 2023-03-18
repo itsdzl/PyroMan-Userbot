@@ -14,18 +14,17 @@ import openai
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import MessageNotModified
-from geezlibs.geez import geez
-from ProjectMan.helpers.njul import *
 from config import CMD_HANDLER as cmd
 from config import OPENAI_API
 
+from ProjectMan.helpers.njul import *
 from ProjectMan.modules.help import add_command_help
 
 
-@geez("ask", cmd)
+@Client.on_message(filters.me & filters.command("ask", cmd))
 async def openai(c, m):
     if len(m.command) == 1:
-        return await m.reply(f"type <code>{cmds}{m.command[0]} [question]</code> Question to use OpenAI")
+        return await m.reply(f"type <code>ask [question]</code> Question to use OpenAI")
     question = m.text.split(" ", maxsplit=1)[1]
     headers = {
         "Content-Type": "application/json",
