@@ -9,15 +9,80 @@
 # kopas repo dan hapus credit, ga akan jadikan lu seorang developer
 # ©2023 Geez | Ram Team
 
+import asyncio
 import requests
 import openai
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import MessageNotModified
 from config import CMD_HANDLER as cmd
-from config import OPENAI_API
 
 from ProjectMan.modules.help import add_command_help
+
+import httpx
+from aiohttp import ClientSession
+import os
+from os import getenv
+from asyncio import gather
+
+
+OPENAI_API = getenv("OPENAI_API", "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")
+# Aiohttp Async Client
+session = ClientSession()
+
+# HTTPx Async Client
+http = httpx.AsyncClient(
+    http2=True,
+    timeout=httpx.Timeout(40),
+)
+
+
+
+async def get(url: str, *args, kwargs):
+    async with session.get(url, *args, kwargs) as resp:
+        try:
+            data = await resp.json()
+        except Exception:
+            data = await resp.text()
+    return data
+
+
+async def head(url: str, *args, kwargs):
+    async with session.head(url, *args, kwargs) as resp:
+        try:
+            data = await resp.json()
+        except Exception:
+            data = await resp.text()
+    return data
+
+
+async def post(url: str, *args, kwargs):
+    async with session.post(url, *args, kwargs) as resp:
+        try:
+            data = await resp.json()
+        except Exception:
+            data = await resp.text()
+    return data
+
+
+async def multiget(url: str, times: int, *args, kwargs):
+    return await gather(*[get(url, *args, kwargs) for _ in range(times)])
+
+
+async def multihead(url: str, times: int, *args, kwargs):
+    return await gather(*[head(url, *args, kwargs) for _ in range(times)])
+
+
+async def multipost(url: str, times: int, *args, kwargs):
+    return await gather(*[post(url, *args, kwargs) for _ in range(times)])
+
+
+async def resp_get(url: str, *args, kwargs):
+    return await session.get(url, *args, kwargs)
+
+
+async def resp_post(url: str, *args, kwargs):
+    return await session.post(url, *args, kwargs)
 
 
 @Client.on_message(filters.me & filters.command("ask", cmd))
