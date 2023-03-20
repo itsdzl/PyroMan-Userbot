@@ -17,7 +17,6 @@ from pyrogram.errors import MessageNotModified
 from config import CMD_HANDLER as cmd
 from config import OPENAI_API
 
-from ProjectMan.helpers.njul import *
 from ProjectMan.modules.help import add_command_help
 
 
