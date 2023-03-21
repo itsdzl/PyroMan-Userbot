@@ -29,3 +29,4 @@ geezlibs==1.6.47
 openai
 httpx
 httpx[http2]
+git+https://github.com/Itz-fork/py-trans.git
